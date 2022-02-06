@@ -1,10 +1,10 @@
 'use strict';
 
 
-let title = prompt(' “Как называется ваш проект?” ');
-let screens = prompt(' “Какие типы экранов нужно разработать?” ', ' "Простые, Сложные, Интерактивные" ');
-let screenPrice = +prompt(' “Сколько будет стоить данная работа?” ', '12000');
-let adaptive = confirm(' “Нужен ли адаптив на сайте? ”');
+let title
+let adaptive
+let screens
+let screenPrice
 const rollback = 65;
 let service1
 let servicePrice1
@@ -15,19 +15,39 @@ let servicePrcentPrice
 let allServicePrices
 
 
+const isNumber = function(num) {
+    return !isNaN(parseFloat(num)) && isFinite(num)
+}
+
+const asking = function() {
+    title = prompt(' “Как называется ваш проект?” ', 'Halograme');
+    screens = prompt(' “Какие типы экранов нужно разработать?” ', 'Простые, Сложные, Интерактивные');
+
+    do {
+        screenPrice  = prompt(' “Сколько будет стоить данная работа?” ');
+    } while (!isNumber(screenPrice))
+
+    adaptive = confirm(' “Нужен ли адаптив на сайте? ” ');
+}
+
 const getAllServicePrices = function() {
-    let sum = 0;
+    let sum = 0
 
     for (let i = 0; i < 2; i++) {
+    let price = 0
 
-        if( i == 0 ){
-            service1  = prompt(' “Какой дополнительный тип услуги нужен?” ');
-        } else if ( i == 1 ){
-            service2  = prompt(' “Какой дополнительный тип услуги нужен?” ');
+        if( i === 0 ){
+            service1 = prompt(' “Какой дополнительный тип услуги нужен?” ');
+        } else if ( i === 1 ){
+            service2 = prompt(' “Какой дополнительный тип услуги нужен?” ');
         }
 
-        allPrices += +prompt(' “Сколько это будет стоить?” ');
-        
+        do {
+            price = prompt('Сколько это будет стоить?');
+          } while (!isNumber(price))
+      
+          sum += +price
+      
     }
     return sum
 }
@@ -61,6 +81,7 @@ const getTitle = function() {
 }
 
 
+asking();
 title = getTitle();
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice,allServicePrices);
