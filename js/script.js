@@ -1,6 +1,5 @@
 'use strict';
 
-// Объявление переменных
 
 const title = document.getElementsByTagName('h1')[0]
 const buttonPlus = document.querySelector('.screen-btn')
