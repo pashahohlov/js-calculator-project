@@ -11,7 +11,7 @@ console.log("Kept you waiting, huh?")
 title = "Калькулятор вёрстки блоков";
 screens = "Простые, Сложные, Интерактивные";
 screenPrice = 1000;
-rollback = 90;
+rollback = 15;
 fullPrice = 5000;
 adaptive = true;
 
@@ -28,7 +28,7 @@ title = prompt('Как называется ваш проект?');
 console.log(title);
 screens = prompt('Какие типы экранов нужно разработать?', "пример: Простые, Сложные, Интерактивные");
 console.log(screens);
-screenPrice = +prompt('Сколько будет стоить денная работа?', "пример: 12000");
+screenPrice = +prompt('Сколько будет стоить данная работа?', "пример: 12000");
 console.log(screenPrice);
 adaptive = confirm('Нужен ли адаптив на сайте?');
 console.log(adaptive);
@@ -41,3 +41,19 @@ console.log(service2);
 servicePrice2 = +prompt('Сколько это будет стоить?');
 console.log(servicePrice2);
 fullPrice = screenPrice + servicePrice1 + servicePrice2;
+switch (true) {
+    case fullPrice >= 30000:
+        alert("Вам доступна скидка 10%");
+        break
+    case 15000 <= fullPrice < 30000:
+        alert("Вам доступна скидка 5%");
+        break
+    case 0 <= fullPrice < 15000:
+        alert("Скидка не предусмотрена");
+        break
+    default:
+        alert("Что-то пошло не так");
+        break
+}
+let servicePercentPrice = fullPrice - (fullPrice / 100 * 15);
+console.log(servicePercentPrice);
